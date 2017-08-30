@@ -2,30 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Rate Limiting</title>
+    <title>Go Assembly by Example: Rate Limiting</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="rate-limiting">
-      <h2><a href="./">Go by Example</a>: Rate Limiting</h2>
+      <h2><a href="./">Go Assembly by Example</a>: Rate Limiting</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em><a href="http://en.wikipedia.org/wiki/Rate_limiting">Rate limiting</a></em>
+            <p>_<a href="http://en.wikipedia.org/wiki/Rate_limiting">Rate limiting</a>_
 is an important mechanism for controlling resource
 utilization and maintaining quality of service. Go
 elegantly supports rate limiting with goroutines,
@@ -252,7 +240,7 @@ then serve the remaining 2 with ~200ms delays each.</p>
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/rate-limiting">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        by <a href="https://twitter.com/lyon01_david">@lyon01_david</a> | based on <a href="https://gobyexample.com/">Go by Example</a> by <a href="https://twitter.com/mmcgrana">@mmcgrana</a>
       </p>
     </div>
   </body>
