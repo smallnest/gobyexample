@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // include 引入定义的一些常量， 例如我们后面使用的 `RODATA`。 其它一些预处理宏也可以使用, 比如 `#define`。
 #include "textflag.h"
 
@@ -5,6 +6,15 @@
 DATA world<>+0(SB)/8, $"hello wo"
 DATA world<>+8(SB)/4, $"rld "
 // `GLOBL` 用来将地址设为全局的(global)， 并且是只读的 (`RODATA`), 相应的长度为 12。
+=======
+// This `#include` is needed to use Go Assembly's constants (for example the `RODATA` that we use later on). Other pre-processor macros can be used in Go Assembly (like `#define`).
+#include "textflag.h"
+
+// `DATA` allows you to store global words in memory 1, 2, 4 or 8 bytes at a time. The <> after the symbol name restricts the data to the current file.
+DATA world<>+0(SB)/8, $"hello wo"
+DATA world<>+8(SB)/4, $"rld "
+// `GLOBL` makes the data global and read-only (`RODATA`) for the relevant length (12).
+>>>>>>> 39dc28f0d2d41769af81572ee7a2ca9ca7d7b321
 GLOBL world<>+0(SB), RODATA, $12
 	
 TEXT ·hello(SB),$88-0
@@ -31,9 +41,15 @@ TEXT ·hello(SB),$88-0
 	MOVQ	AX, (SP)                      
 	MOVQ	$1, 8(SP)                      
 	MOVQ	$1, 16(SP)
+<<<<<<< HEAD
 	// 调用fmt·Println 打印接口内容
 	CALL	fmt·Println(SB)
 	// 代码相当的复杂， 教训就是尽量不要在go 汇编中调用函数
+=======
+	// `fmt.Println` is called with the interface created
+	CALL	fmt·Println(SB)
+	// This is pretty complicated, the lesson here is: don't try to call functions from Go's assembly. 
+>>>>>>> 39dc28f0d2d41769af81572ee7a2ca9ca7d7b321
 	MOVQ 80(SP), BP
 	ADDQ $88, SP
 	RET

@@ -68,10 +68,14 @@
         
         <tr>
           <td class="docs">
+<<<<<<< HEAD:public/add.html
             <p>通过 <code>TEXT package_name·function_name(SB),$frame_size-arguments_size</code> 模式声明了 <code>add</code> 方法。
 注意这里包名 (package name) 是空的， 对应当前的包， 注意其中那个是中间点<code>·</code> (U+00B7, 一些外国人的名字中间常用这个标点， MAC用shift option 9输入， 一般其它输入法「Shift-2」或叹号!左边的那个「`」)， 而不是句点 <code>.</code>。
 <code>$0</code> 指定了栈空间所需的 <code>frame size</code>（0代表我们只使用寄存器)。
 <code>frame size</code> 之后是一个减号(不是真的做减法，而是一个助记符)， 后面跟的数字代表参数和返回值 (argument) 的大小。 本例中参数和返回值占用 3*8 个字节 (它们存在于调用者 caller 的栈内)。</p>
+=======
+            <p>We declare the <code>add</code> function via the <code>TEXT package_name·function_name(SB),$frame_size-arguments_size</code> pattern. Notice that the package name is empty here, corresponding to the current package, and a middle point <code>·</code> is used (U+00B7) not a period. The frame size of <code>$0</code> at the end indicates the stack space needed (none, we&rsquo;ll just use registers), while the arguments to the function and the return value take 3*8 bytes in total.</p>
+>>>>>>> 39dc28f0d2d41769af81572ee7a2ca9ca7d7b321:public/add
 
           </td>
           <td class="code leading">
@@ -84,8 +88,12 @@
         
         <tr>
           <td class="docs">
+<<<<<<< HEAD:public/add.html
             <p><code>MOVQ</code> 指令用来移动64位的值 (Q代表 <code>QUADWORD</code>)。这里是将基于栈指针 <code>FP</code> (指向函数参数)的一个偏移中的数据移动到寄存器 <code>BX</code> 和 <code>BP</code> 中。
 语法格式为 <code>symbol+offset(register)</code>, 这里 <code>(register)</code> 是 <code>(register)</code>的地址。 例如第二行是将 <code>*(FP + 8)</code> 的内容移动到 <code>BP</code>。 注意这里的 <code>x</code> 和 <code>y</code> 是函数原型中的参数的名称。</p>
+=======
+            <p>The <code>MOVQ</code> instruction is used to move a 64-bit value (Q stands for QUADWORD) around. Here from an offset of the frame pointer <code>FP</code> (used to refer to function arguments) to a register (<code>BX</code> and <code>BP</code>). The syntax <code>symbol+offset(register)</code> is used, where <code>(register)</code> is the address pointed by the <code>register</code>. For example, on the second line the content at <code>*(FP + 8)</code> is moved into <code>BP</code>. Note that <code>x</code> and <code>y</code> are the arguments&rsquo; names from the function&rsquo;s prototype.</p>
+>>>>>>> 39dc28f0d2d41769af81572ee7a2ca9ca7d7b321:public/add
 
           </td>
           <td class="code leading">
@@ -112,7 +120,11 @@
         
         <tr>
           <td class="docs">
+<<<<<<< HEAD:public/add.html
             <p>结果移动到 <code>*(FP + 16)</code>, 这个地址是返回结果的地址 (位置在所有的参数之后)。注意我们使用 <code>ret</code>符号代表结果符号， 编译器所要求的格式。</p>
+=======
+            <p>The result is moved at address <code>*(FP + 16)</code> which is the address of the return value (positioned after all the arguments). Note that we named the symbol <code>ret</code>, it might seem useless but a symbol is always required by the compiler.</p>
+>>>>>>> 39dc28f0d2d41769af81572ee7a2ca9ca7d7b321:public/add
 
           </td>
           <td class="code leading">
