@@ -1,17 +1,17 @@
-// This include is needed to use certain Go Assembly constants (instead of their assigned number). For example the `RODATA` that we use later. Other pre-processor maccros can be used in Go Assembly (like `#define`).
+// include 引入定义的一些常量， 例如我们后面使用的 `RODATA`。 其它一些预处理宏也可以使用, 比如 `#define`。
 #include "textflag.h"
 
-// You can only place global words with `DATA` by 1, 2, 4 or 8 bytes at a time. The <> after the symbol name is to restrict this data to the current file.
+// 你可以将全局的word值放入`DATA`段中, 一次可以是1, 2, 4, 或者8个字节. 符号后面的`<>`限制数据在当前文件中。
 DATA world<>+0(SB)/8, $"hello wo"
 DATA world<>+8(SB)/4, $"rld "
-// `GLOBL` is used to make the address global and read only (`RODATA`) for the relevant length (12).
+// `GLOBL` 用来将地址设为全局的(global)， 并且是只读的 (`RODATA`), 相应的长度为 12。
 GLOBL world<>+0(SB), RODATA, $12
 	
 TEXT ·hello(SB),$88-0
 	SUBQ	$88, SP
 	MOVQ	BP, 80(SP)
 	LEAQ	80(SP), BP
-	// A Go string is created in my_string (a pointer to the string followed by the string's length).
+	// 创建一个go字符 my_string（指向字符串的指针，紧跟着字符串的长度）
 	LEAQ	world<>+0(SB), AX 
 	MOVQ	AX, my_string+48(SP)        
 	MOVQ	$11, my_string+56(SP)
@@ -21,7 +21,7 @@ TEXT ·hello(SB),$88-0
 	MOVQ	AX, (SP)
 	LEAQ	my_string+48(SP), AX        
 	MOVQ	AX, 8(SP)
-  // `convT2E` from the `runtime` package is used to create an interface.
+    // 调用 `runtime` 的函数 `convT2E`, 返回一个接口
 	CALL	runtime·convT2E(SB)           
 	MOVQ	24(SP), AX
 	MOVQ	16(SP), CX                    
@@ -31,9 +31,9 @@ TEXT ·hello(SB),$88-0
 	MOVQ	AX, (SP)                      
 	MOVQ	$1, 8(SP)                      
 	MOVQ	$1, 16(SP)
-	// Println is called with the interface created
+	// 调用fmt·Println 打印接口内容
 	CALL	fmt·Println(SB)
-	// This is pretty complicated, the lesson here is don't try to call functions from Go's assembly. 
+	// 代码相当的复杂， 教训就是尽量不要在go 汇编中调用函数
 	MOVQ 80(SP), BP
 	ADDQ $88, SP
 	RET

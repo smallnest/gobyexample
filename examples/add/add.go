@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// the function's body is empty
+// 函数体为空
 func add(x, y int64) int64
 
 func main() {

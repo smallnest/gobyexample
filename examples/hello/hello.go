@@ -1,6 +1,6 @@
 package main
 
-// The underscore _ is to avoid an "unusued package" compiler error.
+// 下划线避免 `unusued package` 编译错误.
 import _ "fmt"
 
 func hello()
