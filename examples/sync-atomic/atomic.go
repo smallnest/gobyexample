@@ -1,7 +1,10 @@
 // This example is taken from the [sync/atomic](https://golang.org/pkg/sync/atomic/) package which provides low-level atomic memory primitives.
-// The swap operation, implemented by the SwapT functions, is the atomic equivalent of //    1. old = *addr
-// 2.  *addr = new
-// 3. return old
+// The swap operation, implemented by the SwapT functions, is the atomic equivalent of
+// ```c
+// old = *addr
+// *addr = new
+// return old
+// ```
 
 package atomic
 

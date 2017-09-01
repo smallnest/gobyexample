@@ -1,10 +1,10 @@
-// This include is needed to use certain Go Assembly constants (instead of their assigned number). For example the `RODATA` that we use later. Other pre-processor maccros can be used in Go Assembly (like `#define`).
+// This `#include` is needed to use Go Assembly's constants (for example the `RODATA` that we use later on). Other pre-processor macros can be used in Go Assembly (like `#define`).
 #include "textflag.h"
 
-// You can only place global words with `DATA` by 1, 2, 4 or 8 bytes at a time. The <> after the symbol name is to restrict this data to the current file.
+// `DATA` allows you to store global words in memory 1, 2, 4 or 8 bytes at a time. The <> after the symbol name restricts the data to the current file.
 DATA world<>+0(SB)/8, $"hello wo"
 DATA world<>+8(SB)/4, $"rld "
-// `GLOBL` is used to make the address global and read only (`RODATA`) for the relevant length (12).
+// `GLOBL` makes the data global and read-only (`RODATA`) for the relevant length (12).
 GLOBL world<>+0(SB), RODATA, $12
 	
 TEXT ·hello(SB),$88-0
@@ -31,9 +31,9 @@ TEXT ·hello(SB),$88-0
 	MOVQ	AX, (SP)                      
 	MOVQ	$1, 8(SP)                      
 	MOVQ	$1, 16(SP)
-	// Println is called with the interface created
+	// `fmt.Println` is called with the interface created
 	CALL	fmt·Println(SB)
-	// This is pretty complicated, the lesson here is don't try to call functions from Go's assembly. 
+	// This is pretty complicated, the lesson here is: don't try to call functions from Go's assembly. 
 	MOVQ 80(SP), BP
 	ADDQ $88, SP
 	RET
