@@ -114,6 +114,7 @@ td.docs p {
     padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 15px;
+    letter-spacing: 0.5pt;
 }
 td.code {
     width: 480px;

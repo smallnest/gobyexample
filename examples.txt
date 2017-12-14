@@ -5,3 +5,4 @@ Sync Atomic
 AES
 Sqrt
 goroutineid
+noescape
